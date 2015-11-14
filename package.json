@@ -1,0 +1,19 @@
+{
+  "name": "hackharvard",
+  "version": "1.0.0",
+  "description": "HackHarvard 2015",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janineko/hackharvard.git"
+  },
+  "author": "Janine, Sharon, James, and Anthony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janineko/hackharvard/issues"
+  },
+  "homepage": "https://github.com/janineko/hackharvard"
+}
