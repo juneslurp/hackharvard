@@ -3,6 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
@@ -23,16 +24,33 @@
     </head>
     
     <body>
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html">Visualizations</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
         <nav>
+          <div class="nav-wrapper container">
+            <a href="#!" class="brand-logo">That's So Sick!</a>
+            <ul class="right hide-on-med-and-down">
+            <li><a href="search.html"><i class="material-icons">search</i></a></li>
+              <!-- Dropdown Trigger -->
+              <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">arrow_drop_down</i></a></li>
+            </ul>
+          </div>
+        </nav>
+        
+        <!-- <nav>
             <div class="navbar-wrapper container">
                 <a href="#" class="brand-logo">That's So Sick!</a>
                 <ul class="right">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
                     <li><a href="#">Visualizations</a></li>
                     <li><a href="#">Contact Us</a></li>
+                    <li><a href="#"><i class="material-icons">search</i></a></li>
                 </ul>
             </div>
-        </nav>
+        </nav> -->
         
         <br><br>
         <div class="row">
@@ -53,7 +71,7 @@
             </div>
             <div class="col s3">
                 <span>
-                    <table>
+                    <table class="highlight">
                         <tr>
                             <th>
                                 Median Household Income:
