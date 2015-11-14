@@ -13,10 +13,17 @@ var client = new Twitter({
 
 app.get('/',function(req,res){
     var ret = "";
-    var params = {q: 'flu', lang:'en'};
+    var params = {
+        q: 'flu',
+        lang:'en',
+        result_type: 'recent',
+        geocode:'39.828282,-98.579555,1400mi'
+    };
+
     client.get('search/tweets', params, function(error, tweets, response){
+        console.log(tweets);
         for(i in tweets.statuses) {
-            ret += tweets.statuses[i].text + "<br><br>";
+            ret += tweets.statuses[i].geo + "<br><br>";
         }
         res.send(ret);
     });
