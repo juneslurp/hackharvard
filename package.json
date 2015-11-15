@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/janineko/hackharvard",
   "devDependencies": {
+    "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "gnip": "^0.3.0",
+    "request": "^2.65.0",
     "twitter": "^1.2.5"
   }
 }

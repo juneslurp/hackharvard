@@ -23,9 +23,9 @@ app.get('/',function(req,res){
     client.get('search/tweets', params, function(error, tweets, response){
         console.log(tweets);
         for(i in tweets.statuses) {
-            ret += tweets.statuses[i].geo + "<br><br>";
+            ret += tweets.statuses[i].text + "<br><br>";
         }
-        res.send(ret);
+        res.send(tweets);
     });
 });
 
