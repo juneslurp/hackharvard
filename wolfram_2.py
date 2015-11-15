@@ -7,7 +7,8 @@ import json
 import urllib
 import urllib2
 import time
-from geopy.geocoders import Nominatim
+# from geopy.geocoders import Nominatim
+from geopy import geocoders
 
 app_id = 'GYXL99-Q2HRYVVQRX'
 # client = wolframalpha.Client(app_id)
@@ -177,11 +178,12 @@ if __name__ == '__main__':
 		data = json.load(data_file)
 		# print len()
 
+	gn = geocoders.GeoNames(username='jamesxue100')
 
 	for i in range(0, len(data)):
-		geolocator = Nominatim()
+		# geolocator = Nominatim()
 		# print data[i]['location']
-		location = geolocator.geocode(data[i]['location'])
+		location = gn.geocode(data[i]['location'])
 
 		# print((location.latitude, location.longitude))
 		if location is not None: 
