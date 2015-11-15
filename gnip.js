@@ -3,7 +3,9 @@ var express = require('express');
 var app = express();
 var path = require("path");
 
-var post = '{\"publisher\":\"twitter\",\"query\":\"cough -is:retweet has:geo lang:en\",\"maxResults\":\"500\",\"lang\":\"en\"}';
+var query = "fever";
+
+var post = '{\"publisher\":\"twitter\",\"query\":\"'+query+' -is:retweet has:geo lang:en\",\"maxResults\":\"500\",\"lang\":\"en\"}';
 var next = "";
 var ret = "var addressPoints = [<br>"
 var run = function(iteration) {
@@ -17,8 +19,8 @@ var run = function(iteration) {
                 var x = 0;
                 var y = 0;
                 for(j in coordinates) {
-                    x+=coordinates[j][0];
-                    y+=coordinates[j][1];
+                    x+=coordinates[j][1];
+                    y+=coordinates[j][0];
                 }
 
                 x = Math.round(x*1000000)/1000000;
@@ -33,7 +35,7 @@ var run = function(iteration) {
             console.error("error", err);
         }
         if(iteration < 120) {
-            post = '{\"publisher\":\"twitter\",\"query\":\"fever -is:retweet has:geo lang:en\",\"maxResults\":\"500\",\"lang\":\"en\",\"next\":\"'+next+'\"}';
+            post = '{\"publisher\":\"twitter\",\"query\":\"'+query+' -is:retweet has:geo lang:en\",\"maxResults\":\"500\",\"lang\":\"en\",\"next\":\"'+next+'\"}';
             run(iteration+1);
         }
         if(iteration == 120) {

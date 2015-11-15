@@ -1,26 +1,43 @@
 {
-  "name": "hackharvard",
-  "version": "1.0.0",
-  "description": "HackHarvard 2015",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/janineko/hackharvard.git"
-  },
-  "author": "Janine, Sharon, James, and Anthony",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/janineko/hackharvard/issues"
-  },
-  "homepage": "https://github.com/janineko/hackharvard",
-  "devDependencies": {
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "gnip": "^0.3.0",
-    "request": "^2.65.0",
-    "twitter": "^1.2.5"
-  }
+    "name": "hackharvard",
+    "version": "1.0.0",
+    "description": "HackHarvard 2015",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/janineko/hackharvard.git"
+    },
+    "author": "Janine, Sharon, James, and Anthony",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/janineko/hackharvard/issues"
+    },
+    "homepage": "https://github.com/janineko/hackharvard",
+    "devDependencies": {
+        "body-parser": "^1.14.1",
+        "express": "^4.13.3",
+        "gnip": "^0.3.0",
+        "leaflet.heat": "^0.2.0",
+        "request": "^2.65.0",
+        "twitter": "^1.2.5"
+    },
+    "jshintConfig": {
+        "quotmark": "single",
+        "globals": {
+            "L": true,
+            "simpleheat": true
+        },
+        "trailing": true,
+        "camelcase": true,
+        "curly": true,
+        "eqeqeq": true,
+        "noempty": true,
+        "nonbsp": true,
+        "undef": true,
+        "unused": true,
+        "browser": true
+    }
 }
