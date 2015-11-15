@@ -4,5 +4,5 @@ We made a web application to visualize the impact of flu season on communities w
 Who we are: 
 We met at HackHarvard 2015! Just some ~undergraduates~ interested in machine learning, data visualization, biotech, and #Twitter. We’re from Alpharetta and Marietta, GA, Irving, CA, and North Andover, MA, and we go to school at Columbia University and Georgia Tech. 
 
-Team members: Janine Ko, Alan Liu, Sharon Shu, James Xue
+Team members: Janine Ko, Anthony Liu, Sharon Shu, James Xue
 
