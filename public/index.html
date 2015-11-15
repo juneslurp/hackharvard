@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+    </head>
+
+    <body>
+        <nav>
+          <div class="nav-wrapper container">
+            <a href="index.html" class="brand-logo center">That's So Sick!</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="https://github.com/janineko/hackharvard">Github</a></li>
+                <li><a href="http://devpost.com/frogbandit">DevPost</a></li>
+              </ul>
+          </div>
+        </nav>
+
+
+        <div class="row">
+            <h5 class="header light center">Track disease prevalence and provide solutions using socioeconomic and healthcare data.</h5>
+            <br>
+            <div class="col s2 offset-s3">
+                <a href="disease.html" class="ui-btn ui-corner-all ui-shadow">Disease Trends</a><br>
+            </div>
+            <div class="col s2">
+                <a href="health.html" class="ui-btn ui-corner-all ui-shadow">Health Coverage</a><br>
+            </div>
+            <div class="col s2">
+                <a href="income.html" class="ui-btn ui-corner-all ui-shadow">Socioeconomic Data</a><br>
+            </div>
+        </div>
+
+
+        <div id="map" class="center"></div>
+
+        <!-- <script src="../node_modules/simpleheat/simpleheat.js"></script>
+        <script src="../src/HeatLayer.js"></script> -->
+
+        <script src="js/leaflet-heat.js"></script>
+
+        <script src="js/flu.js"></script>
+        <script>
+
+        var map = L.map('map').setView([0,0], 2);
+        var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+        addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
+        var heat = L.heatLayer(addressPoints).addTo(map);
+        </script>
+
+        <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col m4">
+              <h5 class="white-text">About Us</h5>
+              <p class="grey-text text-lighten-4">Made with love at HackHarvard 2015.</p>
+            </div>
+            <div class="col m4">
+                <h5 class="white-text">Check us out!</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="http://anthonyliu.com/">Anthony Liu</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/frogbandit">James Xue</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/janineko">Janine Ko</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/sharonshu">Sharon Shu</a></li>
+                </ul>
+            </div>
+            <div class="col m4">
+              <h5 class="white-text">Email us!</h5>
+              <ul>
+                <li><a class="grey-text text-lighten-3" href="mailto:anthonyliu@anthonyliu.com">anthonyliu@anthonyliu.com</a></li>
+                <li><a class="grey-text text-lighten-3" href="mailto:james.xue@columbia.edu">james.xue@columbia.edu</a></li>
+                <li><a class="grey-text text-lighten-3" href="mailto:jdk2160@columbia.edu">jdk2160@columbia.edu</a></li>
+                <li><a class="grey-text text-lighten-3" href="mailto:ss4756@columbia.edu ">ss4756@columbia.edu </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          <small>&nbsp;&nbsp; 2015 That's So Sick!</small>
+          </div>
+        </div>
+      </footer>
+    </body>
+</html>

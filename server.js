@@ -20,7 +20,7 @@ var client = new Twitter({
 //   console.log("Connected correctly to server.");
 //   db.close();
 // });
- 
+
 // app.get('/',function(req,res){
 //     var ret = "";
 //     var params = {
@@ -40,7 +40,7 @@ var client = new Twitter({
 // });
 
 app.get('/',function(req, res){
-  res.sendFile(path.join(__dirname+'/index.html'));
+  res.sendFile(path.join(__dirname+'/public/index.html'));
   // res.send('asdf');
 });
 
