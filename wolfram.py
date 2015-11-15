@@ -74,7 +74,7 @@ class Wolfram:
 			
 	def SocioEconomicQuery(self, query):
 	 	url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(query) + '&format=plaintext&scantimeout=20'
-	 	print url
+	 	# print url
 	 	# time.sleep(10)
 		html = urllib2.urlopen(url).read()
 		if "<queryresult success='true'" in html:
@@ -82,13 +82,15 @@ class Wolfram:
 				num1 = html.find("<pod title='County'")
 			elif "<pod title='Counties'" in html:
 				num1 = html.find("<pod title='Counties'")
+			else:
+				return
 
 			numStart = html.find('<plaintext>', num1) + len('<plaintext>')
 			numEnd = html.find('</plaintext>', numStart)
 			county = html[numStart:numEnd].strip()
 
 			url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(query) + 'median household Income' '&format=plaintext&scantimeout=20'
-		 	print url
+		 	# print url
 
 			if "<pod title='Income statistics'" in html: 
 				num1 = html.find("<pod title='Income statistics'")		
@@ -100,7 +102,7 @@ class Wolfram:
 			else:
 				# time.sleep(10)
 				url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(county) + '&format=plaintext&scantimeout=20'
-				print url
+				# print url
 				html = urllib2.urlopen(url).read()
 				if "<pod title='Income statistics'" in html: 
 					num1 = html.find("<pod title='Income statistics'")		
@@ -109,9 +111,9 @@ class Wolfram:
 					numEnd = html.find(' per year', numStart)
 					income = html[numStart:numEnd].strip()
 
-			a_dict = {'county': county, 'income': income}
+			a_dict = {'location': query, 'county': county, 'income': income}
 			incomes.append(a_dict)
-			print incomes
+			# print incomes
 			with open('incomes.json', 'w') as f:
 				json.dump(incomes, f)
 
@@ -121,7 +123,7 @@ class Wolfram:
 		else:
 			# print 'fail'
 			print len(incomes)
-		raw_input()
+		# raw_input()
 
 
 if __name__ == '__main__':
@@ -133,7 +135,7 @@ if __name__ == '__main__':
 
 	cities = []
 
-	with open('hospitals.json') as data_file:    
+	with open('hospitals_louisiana.json') as data_file:    
 		data = json.load(data_file)
 
 	for i in range(0, len(data)):

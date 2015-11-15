@@ -11,22 +11,36 @@ var client = new Twitter({
     access_token_secret: 'uovmu4FNe01uLl4fhwdzquMFQZQuY6L0BthHr7sWx5W0z'
 });
 
-app.get('/',function(req,res){
-    var ret = "";
-    var params = {
-        q: 'flu',
-        lang:'en',
-        result_type: 'recent',
-        geocode:'39.828282,-98.579555,1400mi'
-    };
+var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
 
-    client.get('search/tweets', params, function(error, tweets, response){
-        console.log(tweets);
-        for(i in tweets.statuses) {
-            ret += tweets.statuses[i].text + "<br><br>";
-        }
-        res.send(tweets);
-    });
+var url = 'mongodb://localhost:27017/test';
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server.");
+  db.close();
+});
+
+// app.get('/',function(req,res){
+//     var ret = "";
+//     var params = {
+//         q: 'flu',
+//         lang:'en',
+//         result_type: 'recent',
+//         geocode:'39.828282,-98.579555,1400mi'
+//     };
+
+//     client.get('search/tweets', params, function(error, tweets, response){
+//         console.log(tweets);
+//         for(i in tweets.statuses) {
+//             ret += tweets.statuses[i].text + "<br><br>";
+//         }
+//         res.send(tweets);
+//     });
+// });
+
+app.get('/',function(req, res){
+  res.sendFile(path.join(__dirname+'/index.html'));
 });
 
 app.use(express.static(path.join(__dirname, 'public')));

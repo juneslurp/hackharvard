@@ -1,8 +1,0 @@
-What we do: 
-We made a web application to visualize the impact of flu season on communities with varying access to medical care. We scraped Twitter to see who was talking about feeling sick, and then mapped it alongside Wolfram Alpha’s data on hospitals and medical costs. 
-
-Who we are: 
-We met at HackHarvard 2015! Just some ~undergraduates~ interested in machine learning, data visualization, biotech, and #Twitter. We’re from Alpharetta and Marietta, GA, Irving, CA, and North Andover, MA, and we go to school at Columbia University and Georgia Tech. 
-
-Team members: Janine Ko, Anthony Liu, Sharon Shu, James Xue
-

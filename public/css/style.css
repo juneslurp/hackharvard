@@ -13,8 +13,14 @@ th {
     width: 70%;
 }
 
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
+
 nav {
-    background-color: darkred;
+    background-color: #8B0000;
 }
 
 footer {
@@ -22,14 +28,30 @@ footer {
 }
 
 a {
-    font-weight: bold;
+    color: #0077ff; 
 }
 
 footer.page-footer {
     background-color: #8B0000;
 }
 
-#map {
-    width: 570px;
-    height: 500px;
+#map { 
+    /*width: 1000px; */
+    width: 1200px;
+    height: 600px; 
+}
+
+body { 
+    font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; 
+}
+
+.ghbtns { 
+    position: relative; 
+    top: 4px; 
+    margin-left: 5px; 
+}
+        
+
+h4 {
+    font-weight: bold;
 }
