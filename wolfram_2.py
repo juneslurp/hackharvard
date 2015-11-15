@@ -1,3 +1,5 @@
+#utf-8
+
 import wolframalpha
 import us
 import mechanize
@@ -5,6 +7,7 @@ import json
 import urllib
 import urllib2
 import time
+from geopy.geocoders import Nominatim
 
 app_id = 'GYXL99-Q2HRYVVQRX'
 # client = wolframalpha.Client(app_id)
@@ -114,7 +117,7 @@ class Wolfram:
 			a_dict = {'location': query, 'county': county, 'income': income}
 			incomes.append(a_dict)
 			# print incomes
-			with open('incomes2.json', 'w') as f:
+			with open('incomes.json', 'w') as f:
 				json.dump(incomes, f)
 
 			# print 'success'
@@ -133,20 +136,64 @@ if __name__ == '__main__':
 	# 	wolfram.AccessState(i)
 	# 	print ('finished state')
 
-	cities = []
+	# cities = []
 
-	with open('hospitals_louisiana.json') as data_file:    
+	# with open('hospitals_louisiana.json') as data_file:    
+	# 	data = json.load(data_file)
+
+	# for i in range(0, len(data)):
+	# 	city = data[i]['location']
+	# 	cities.append(city)
+
+	# for j in range(0, len(cities)):
+	# 	wolfram.SocioEconomicQuery(cities[j])
+
+	# counties = []
+
+	# # with open ('counties.json') as file1:
+	# data1 = json.load(open('counties.json', 'r'), encoding='ISO-8859-1')
+	# print len(data1['features'])
+
+	# with open ('incomes.json') as file2:
+	# 	data2 = json.load(file2)
+
+	# for i in range(0, len(data1['features'])):
+	# 	for j in range (0, len(data2)):
+	# 		# print data1['features'][i]['properties']['NAME'], data2[j]['county']
+	# 		if data1['features'][i]['properties']['NAME'] in data2[j]['county']:
+	# 			print 'yes'
+	# 			data1['features'][i]['properties']['income'] = data2[j]['income']
+	# 			continue
+	# 	print 'no'
+	# 	# raw_input()
+	# 	# raw_input()
+	# # print hospitals
+	# with open('counties3.json', 'w') as outfile:
+	# 	json.dump(data1, outfile)
+
+	latlng = []
+
+	with open ('hospitals_full.json') as data_file:
 		data = json.load(data_file)
+		# print len()
 
-	for i in range(1661, len(data)):
-		city = data[i]['location']
-		# print city
-		cities.append(city)
+
+	for i in range(0, len(data)):
+		geolocator = Nominatim()
+		# print data[i]['location']
+		location = geolocator.geocode(data[i]['location'])
+
+		# print((location.latitude, location.longitude))
+		if location is not None: 
+			latlng.append([location.latitude, location.longitude])
+
+		print i
+		# print latlng
 		# raw_input()
 
-	for j in range(0, len(cities)):
-		wolfram.SocioEconomicQuery(cities[j])
+	with open('latlng.json', 'w') as outfile:
+		json.dump(latlng, outfile)
 
-	# print hospitals
+
 	print ('done!')
 

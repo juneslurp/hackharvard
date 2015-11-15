@@ -40,8 +40,7 @@ var client = new Twitter({
 // });
 
 app.get('/',function(req, res){
-  // res.sendFile(path.join(__dirname+'/index.html'));
-  res.send('asdf');
+  res.sendFile(path.join(__dirname+'/health.html'));
 });
 
 app.use(express.static(path.join(__dirname, 'public')));

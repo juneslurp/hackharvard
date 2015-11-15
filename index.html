@@ -31,22 +31,16 @@
         <div class="row">
             <h5 class="header light center">Track disease prevalence and provide solutions using socioeconomic and healthcare data.</h5>
             <br>
-            <div class="col s2 offset-s3">
-                <a href="disease.html" class="ui-btn ui-corner-all ui-shadow">Disease Trends</a><br>
+            <div class="col s4 offset-s2">
+                <a href="disease.html" class="ui-btn ui-corner-all ui-shadow">Disease Prevalence and Trends</a><br>
             </div>
-            <div class="col s2">
-                <a href="health.html" class="ui-btn ui-corner-all ui-shadow">Health Coverage</a><br>
-            </div>
-            <div class="col s2">
-                <a href="income.html" class="ui-btn ui-corner-all ui-shadow">Socioeconomic Data</a><br>
+            <div class="col s4">
+                <a href="health.html" class="ui-btn ui-corner-all ui-shadow">Health and Socioeconomic Data</a><br>
             </div>
         </div>
 
 
         <div id="map" class="center"></div>
-
-        <!-- <script src="../node_modules/simpleheat/simpleheat.js"></script>
-        <script src="../src/HeatLayer.js"></script> -->
 
         <script src="js/leaflet-heat.js"></script>
 
@@ -64,6 +58,7 @@
         var heat = L.heatLayer(addressPoints).addTo(map);
 
         </script>
+
 
         <footer class="page-footer">
         <div class="container">
