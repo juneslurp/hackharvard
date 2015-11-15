@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var path = require("path");
 
-var query = "fever";
+var query = "a";
 
 var post = '{\"publisher\":\"twitter\",\"query\":\"'+query+' -is:retweet has:geo lang:en\",\"maxResults\":\"500\",\"lang\":\"en\"}';
 var next = "";
