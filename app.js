@@ -20,7 +20,7 @@ MongoClient.connect(url, function(err, db) {
   console.log("Connected correctly to server.");
   db.close();
 });
-
+ 
 // app.get('/',function(req,res){
 //     var ret = "";
 //     var params = {
