@@ -116,7 +116,7 @@ class Wolfram:
 			a_dict = {'location': query, 'county': county, 'income': income}
 			incomes.append(a_dict)
 			# print incomes
-			with open('incomes3.json', 'w') as f:
+			with open('incomes.json', 'w') as f:
 				json.dump(incomes, f)
 
 			# print 'success'
@@ -135,19 +135,17 @@ if __name__ == '__main__':
 	# 	wolfram.AccessState(i)
 	# 	print ('finished state')
 
-	cities = []
+	# cities = []
 
-	with open('data/hospitals_full.json') as data_file:    
-		data = json.load(data_file)
+	# with open('hospitals_louisiana.json') as data_file:    
+	# 	data = json.load(data_file)
 
-	for i in range(2390, len(data)):
-		city = data[i]['location']
-		# print city
-		cities.append(city)
-		# raw_input()
+	# for i in range(0, len(data)):
+	# 	city = data[i]['location']
+	# 	cities.append(city)
 
-	for j in range(0, len(cities)):
-		wolfram.SocioEconomicQuery(cities[j])
+	# for j in range(0, len(cities)):
+	# 	wolfram.SocioEconomicQuery(cities[j])
 
 	# counties = []
 
@@ -172,27 +170,27 @@ if __name__ == '__main__':
 	# with open('counties3.json', 'w') as outfile:
 	# 	json.dump(data1, outfile)
 
-	# latlng = []
+	latlng = []
 
-	# with open ('data/hospitals_full.json') as data_file:
-	# 	data = json.load(data_file)
-	# 	# print len()
+	with open ('data/hospitals_full.json') as data_file:
+		data = json.load(data_file)
+		# print len()
 
-	# gn = geocoders.GeoNames(username='jamesxue100')
+	gn = geocoders.GeoNames(username='jamesxue100')
 
-	# for i in range(0, len(data)):
-	# 	try: 
-	# 		location = gn.geocode(data[i]['location'], timeout=None)
-	# 		if location is not None: 
-	# 			latlng.append({'name': data[i]['name'], 'latlng': [location.latitude, location.longitude]})
+	for i in range(3000, 4000):
+		try: 
+			location = gn.geocode(data[i]['location'], timeout=None)
+			if location is not None: 
+				latlng.append({'name': data[i]['name'], 'latlng': [location.latitude, location.longitude]})
 
-	# 	except:
-	# 		print("Error: geocode failed")
-	# 		continue
-	# 	print i
+		except:
+			print("Error: geocode failed")
+			continue
+		print i
 
-	# with open('latlng_full.json', 'w') as outfile:
-	# 	json.dump(latlng, outfile)
+	with open('latlng_4.json', 'w') as outfile:
+		json.dump(latlng, outfile)
 
 	print ('done!')
 
