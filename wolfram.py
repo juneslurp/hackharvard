@@ -4,6 +4,7 @@ import mechanize
 import json
 import urllib
 import urllib2
+import time
 
 app_id = 'GYXL99-Q2HRYVVQRX'
 # client = wolframalpha.Client(app_id)
@@ -72,42 +73,56 @@ class Wolfram:
 			print len(hospitals)
 			
 	def SocioEconomicQuery(self, query):
-	 	url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(query) + '&format=plaintext'
+	 	url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(query) + '&format=plaintext&scantimeout=20'
+	 	print url
+	 	# time.sleep(10)
 		html = urllib2.urlopen(url).read()
 		if "<queryresult success='true'" in html:
 			if "<pod title='County'" in html:
 				num1 = html.find("<pod title='County'")
-				numStart = html.find('<plaintext>', num1) + len('<plaintext>')
-				numEnd = html.find('</plaintext>', numStart)
-				county = html[numStart:numEnd].strip()
+			elif "<pod title='Counties'" in html:
+				num1 = html.find("<pod title='Counties'")
 
+			numStart = html.find('<plaintext>', num1) + len('<plaintext>')
+			numEnd = html.find('</plaintext>', numStart)
+			county = html[numStart:numEnd].strip()
+
+			url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(query) + 'median household Income' '&format=plaintext&scantimeout=20'
+		 	print url
+
+			if "<pod title='Income statistics'" in html: 
+				num1 = html.find("<pod title='Income statistics'")		
+				num2 = html.find('<plaintext>', num1) + len('<plaintext>')
+				numStart = html.find('median household income | $', num2) + len('median household income | $')
+				numEnd = html.find(' per year', numStart)
+				income = html[numStart:numEnd].strip()
+
+			else:
+				# time.sleep(10)
+				url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(county) + '&format=plaintext&scantimeout=20'
+				print url
+				html = urllib2.urlopen(url).read()
 				if "<pod title='Income statistics'" in html: 
 					num1 = html.find("<pod title='Income statistics'")		
-					numStart = html.find('<plaintext>', num1) + len('<plaintext>')
-					numEnd = html.find('</plaintext>', numStart)
+					num2 = html.find('<plaintext>', num1) + len('<plaintext>')
+					numStart = html.find('median household income | $', num2) + len('median household income | $')
+					numEnd = html.find(' per year', numStart)
 					income = html[numStart:numEnd].strip()
 
-				else:
-					url = 'http://api.wolframalpha.com/v2/query?appid=GYXL99-Q2HRYVVQRX&input=' + urllib.quote(county) + '&format=plaintext'
-					html = urllib2.urlopen(url).read()
-					if "<pod title='Income statistics'" in html: 
-						num1 = html.find("<pod title='Income statistics'")		
-						numStart = html.find('<plaintext>', num1) + len('<plaintext>')
-						numEnd = html.find('</plaintext>', numStart)
-						income = html[numStart:numEnd].strip()
+			a_dict = {'county': county, 'income': income}
+			incomes.append(a_dict)
+			print incomes
+			with open('incomes.json', 'w') as f:
+				json.dump(incomes, f)
 
-				a_dict = {'county': county, 'location': income}
-				incomes.append(a_dict)
-				print incomes
-				with open('incomes.json', 'w') as f:
-					json.dump(incomes, f)
-
-				# print 'success'
-				print len(incomes)
+			# print 'success'
+			print len(incomes)
 
 		else:
 			# print 'fail'
 			print len(incomes)
+		raw_input()
+
 
 if __name__ == '__main__':
 	wolfram = Wolfram()
@@ -119,15 +134,14 @@ if __name__ == '__main__':
 	cities = []
 
 	with open('hospitals.json') as data_file:    
-    	data = json.load(data_file)
+		data = json.load(data_file)
 
-    for i in data:
-    	city = data[i]['location']
-    	print city
-    	cities.append(city)
+	for i in range(0, len(data)):
+		city = data[i]['location']
+		cities.append(city)
 
-    for j in cities:
-		self.SocioEconomicQuery(cities[j])
+	for j in range(0, len(cities)):
+		wolfram.SocioEconomicQuery(cities[j])
 
 	# print hospitals
 	print ('done!')
