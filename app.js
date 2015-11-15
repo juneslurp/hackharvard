@@ -40,12 +40,13 @@ var client = new Twitter({
 // });
 
 app.get('/',function(req, res){
-  res.sendFile(path.join(__dirname+'/index.html'));
+  // res.sendFile(path.join(__dirname+'/index.html'));
+  res.send('asdf');
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-var server = app.listen(process.env.PORT || 1337, function () {
+var server = app.listen(process.env.PORT || 3000, function () {
     var host = server.address().address;
     var port = server.address().port;
 
