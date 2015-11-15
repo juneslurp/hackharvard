@@ -199,7 +199,8 @@
 
       for (var i = 0; i < latlng.length; i++)
       {
-          var marker = L.marker(latlng[i]).addTo(map);
+          var circle = L.marker(latlng[i]).addTo(map);
+          // var circle = L.circle(latlng[i], 500, {fillOpacity: 0.2,color:'blue'}).addTo(map);
       }
 
 

@@ -1,5 +1,4 @@
 #utf-8
-
 import wolframalpha
 import us
 import mechanize
@@ -7,7 +6,6 @@ import json
 import urllib
 import urllib2
 import time
-# from geopy.geocoders import Nominatim
 from geopy import geocoders
 
 app_id = 'GYXL99-Q2HRYVVQRX'
@@ -174,28 +172,25 @@ if __name__ == '__main__':
 
 	latlng = []
 
-	with open ('hospitals_full.json') as data_file:
+	with open ('data/hospitals_full.json') as data_file:
 		data = json.load(data_file)
 		# print len()
 
 	gn = geocoders.GeoNames(username='jamesxue100')
 
 	for i in range(0, len(data)):
-		# geolocator = Nominatim()
-		# print data[i]['location']
-		location = gn.geocode(data[i]['location'])
+		try: 
+			location = gn.geocode(data[i]['location'], timeout=None)
+			if location is not None: 
+				latlng.append({'name': data[i]['name'], 'latlng': [location.latitude, location.longitude]})
 
-		# print((location.latitude, location.longitude))
-		if location is not None: 
-			latlng.append([location.latitude, location.longitude])
-
+		except GeocoderTimedOut as e:
+			print("Error: geocode failed")
+			continue
 		print i
-		# print latlng
-		# raw_input()
 
-	with open('latlng.json', 'w') as outfile:
+	with open('latlng_full.json', 'w') as outfile:
 		json.dump(latlng, outfile)
-
 
 	print ('done!')
 
