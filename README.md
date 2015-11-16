@@ -1,9 +1,6 @@
-# hackharvard
-Janine Ko, Anthony Liu, Sharon Shu, James Xue
+# That's So Sick
 
-<!--#![alt text](http://i68.tinypic.com/9iqnv5.png "Logo Title Text 1")-->
-
-**That's So Sick: Track disease prevalence and provide solutions using socioeconomic and healthcare data.** 
+**Track disease prevalence and provide solutions using socioeconomic and healthcare data.** 
 As a purely data visualization app, our app scrapes a number of socioeconomic and disease related information from online sources such as Wolfram alpha and Twitter.
 
 ![alt text](http://i65.tinypic.com/nno7th.png "App Screenshot 1")
