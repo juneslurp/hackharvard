@@ -172,13 +172,13 @@ if __name__ == '__main__':
 
 	latlng = []
 
-	with open ('data/hospitals_full.json') as data_file:
+	with open ('data/latlng_full.json') as data_file:
 		data = json.load(data_file)
 		# print len()
 
 	gn = geocoders.GeoNames(username='jamesxue100')
 
-	for i in range(3000, 4000):
+	for i in range(5000, len(data)):
 		try: 
 			location = gn.geocode(data[i]['location'], timeout=None)
 			if location is not None: 
@@ -189,7 +189,7 @@ if __name__ == '__main__':
 			continue
 		print i
 
-	with open('latlng_4.json', 'w') as outfile:
+	with open('latlng_6.json', 'w') as outfile:
 		json.dump(latlng, outfile)
 
 	print ('done!')
