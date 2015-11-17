@@ -116,7 +116,7 @@ class Wolfram:
 			a_dict = {'location': query, 'county': county, 'income': income}
 			incomes.append(a_dict)
 			# print incomes
-			with open('incomes7.json', 'w') as f:
+			with open('incomes12.json', 'w') as f:
 				json.dump(incomes, f)
 
 			# print 'success'
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 	with open('data/hospitals_full.json') as data_file:    
 		data = json.load(data_file)
 
-	for i in range(3607, len(data)):
+	for i in range(5493, len(data)):
 		city = data[i]['location']
 		# print city
 		cities.append(city)
